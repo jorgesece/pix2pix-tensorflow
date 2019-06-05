@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
+FROM tensorflow/tensorflow:1.4.1
 
 WORKDIR /root
 
@@ -94,7 +94,6 @@ RUN apt-get install -y --no-install-recommends \
         unzip
 
 # gpu tracing in tensorflow
-ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 
 RUN pip install \
     appdirs==1.4.0 \
@@ -117,8 +116,7 @@ RUN pip install \
     pyparsing==2.1.10 \
     rsa==3.4.2 \
     six==1.10.0 \
-    uritemplate==3.0.0 \
-    tensorflow-gpu==1.4.1
+    uritemplate==3.0.0
 
 RUN git clone https://github.com/affinelayer/pix2pix-tensorflow/ /app
 
